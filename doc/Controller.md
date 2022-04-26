@@ -48,17 +48,24 @@
 - invoke swap against Pool
 - emit SwapAmount
 
+## _updatePoolSize
+- invoke _totalH2O to get total H20
+- calculate update ratio 
+- scale ice and stm pool with calculated ratio
+
+## _totalH2O - private
+return sum of H20 in both pools 
+
+
+# YET TO DIG INTO 
+
+
 ## onRewardsClaimed - internal override
 
 ## calculateError - internal override
 
 ## applyError -  internal override
 
-
-_updatePoolSize
-
-## _totalH2O - private
-return sum of H20 in both pools 
 
 ## _scaleChangeWithTime
 
