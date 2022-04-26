@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "truffle test"
+    "test": "truffle test",
+    "compile": "npx hardhat compile"
   },
   "repository": {
     "type": "git",
@@ -19,5 +20,8 @@
   "dependencies": {
     "@openzeppelin/contracts": "^4.5.0",
     "truffle": "^5.5.9"
+  },
+  "devDependencies": {
+    "hardhat": "^2.9.3"
   }
 }

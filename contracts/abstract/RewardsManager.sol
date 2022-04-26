@@ -68,6 +68,8 @@ abstract contract RewardsManager is IceWaterTokens {
     @param fromSTM Boolean indicating whether STM rewards should be claimed.
     @return uint256 Amount of rewards claimed with 18 decimals.
     */
+
+    // TODO: Might be worth adding a require statement to check if there is amount to claim
     function claimRewards(bool fromICE, bool fromSTM)
         public
         returns (uint256)

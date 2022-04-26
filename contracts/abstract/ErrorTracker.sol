@@ -3,6 +3,8 @@ pragma solidity ^0.8.0;
 
 import "../lib/FixedPoint.sol";
 
+// TODO: Would recommend prefixing function arguments with underscore
+
 /** @title Tracks the PI error for a PI controller
     @notice Implements a controller for computing and managing the proportional and integral errors of a PI controller.  Could be modified to implement a PID.
     @dev Contract should be extended by another contract that will specify how to compute the error and compensate for it.
@@ -79,13 +81,16 @@ abstract contract ErrorTracker {
         _iLastTime = block.timestamp;
 
         // Calculate the errors.
+        // TODO: Redundant Variables. Save gas 
         int256 dError = calculateError();
+        // TODO: Redundant Variables. Save gas 
         int256 dAccumError = _dAccumError + dError * iTimeDelta;
 
         // Update errors
         _dLastError = dError;
         _dAccumError = dAccumError;     
 
+        // TODO: typecast seems uncessary 
         // Call the virtual function that applies the control variable.        
         applyError(dError, dAccumError, uint256(iTimeDelta));
     }

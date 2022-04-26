@@ -50,6 +50,7 @@ contract VirtualPool is ReentrancyGuard, Ownable
     @return uint256 Price of A tokens with 18 decimals.
     */
     function priceA() public view returns(uint256) {
+        // TODO: Protect when poolSize is 0
         return poolSizeB.div(poolSizeA);
     }
     
@@ -59,6 +60,7 @@ contract VirtualPool is ReentrancyGuard, Ownable
     */
     function setPriceA(uint256 dPrice) public onlyOwner {
         // Update the pool A size to achieve this price.
+        // TODO: Protect when dPrice is 0
         poolSizeA = poolSizeB.div(dPrice);
     }
 
@@ -67,6 +69,7 @@ contract VirtualPool is ReentrancyGuard, Ownable
     @return uint256 Price of B tokens with 18 decimals.
     */
     function priceB() public view returns(uint256) {
+        // TODO: Protect when poolSizeB is 0
         return poolSizeA.div(poolSizeB);
     }
 
@@ -115,7 +118,7 @@ contract VirtualPool is ReentrancyGuard, Ownable
         // Mint and Burn.
         swap(tokenA, tokenB, dAmountA, dAmountB, sender);
 
-        // TODO: run this before or after the swap?
+        // TODO: Should be before swap
         // Update the pool sizes
         require(dAmountB < poolSizeB, "Resulting swap amount larger than vpool");
         poolSizeA += dAmountA;
@@ -160,6 +163,7 @@ contract VirtualPool is ReentrancyGuard, Ownable
         return dAmountA;
     }
 
+    // TODO: rename to _calcSwapAmount
     /**
     @notice Calculates how many tokens should be swapped according to a constant product curve.
     @param dPoolX Size of the pool for the token being swapped with 18 decimals.
